@@ -1,4 +1,4 @@
-#PINT'S E INPUT'S
+#PRINT'S E INPUT'S
 
 1#Imprima a frase: Python na Escola de Programação da Alura.
 print ('Python na Escola de Programação da Alura!')
