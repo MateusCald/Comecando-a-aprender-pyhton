@@ -1,3 +1,5 @@
+#DICIONARIO
+
 1#Crie um dicionário representando informações sobre uma pessoa, como nome, idade e cidade.
 informacoes_pessoais = {'Nome': 'Mateus', 'Idade': 26, 'Cidade': 'São Paulo'}
 
