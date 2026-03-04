@@ -1,64 +1,80 @@
 #ATIVIDADES PARA FIXCAÇÃO DE IF, ELIF, ELSE
 
 1#Crie um programa que receba o número de vendas dos dois produtos e exiba uma mensagem indicando qual deles vendeu mais. Se as quantidades forem iguais, exiba uma mensagem dizendo que houve empate.
-macas = int(input('Digite a quantidade de maças vendidas: '))
-bananas = int(input('Digite a quantidade de bananas vendidas: '))
+macas = int(input('Digite o número de maças vendidas: '))
+bananas = int(input('Digite o número de bananas vendidas: '))
+diferenca = abs(macas - bananas)
 
 if macas > bananas:
-    print ('Foram vendidas mais macas do que bananas')
-elif macas < bananas:
-    print ('Foram vendidas mais bananas do que macas')
+    print (f'As maças tiveram mais vendas, sendo vendidas {macas}, com diferença de {diferenca} unidade(s) a mais que a banana ({bananas} unidade(s)).')
+elif bananas > macas:
+    print (f'As banas tiveram mais vendas, sendo vendidas {bananas}, com diferença de {diferenca} unidade(s) a mais que a maça ({macas} unidade(s)).')
 else:
-    print ('Foram vendidas a mesma quantidade das frutas')
+    print (f'Ambos produtos tiveram a mesma quantidade de vendas, (Bananas {bananas} e Maças {macas}).')
+
 
 2#Escreva um programa que receba o número de dias de três atividades e exiba o tempo total do projeto. Se algum valor for negativo, mostre uma mensagem informando o erro.
-atividade_a = int(input('Informe a quantidade de dia(s) que utilizou para resolver a atividade A: '))
-atividade_b = int(input('Informe a quantidade de dia(s) que utilizou para resolver a atividade B: '))
-atividade_c = int(input('Informe a quantidade de dia(s) que utilizou para resolver a atividade C: '))
+atividade_A = int(input('Informe o número de dias utilizados para finalizar a atividade A: '))
+atividade_B = int(input('Informe o número de dias utilizados para finalizar a atividade B: '))
+atividade_C = int(input('Informe o número de dias utilizados para finalizar a atividade C: '))
 
-if (atividade_a > 0 and atividade_a > 0 and atividade_c > 0):
-    total_de_dias = atividade_a + atividade_b + atividade_c
-    print (f'Foi utilizado um total de {total_de_dias} dias para finalizar as três atividades.')
+if atividade_A < 0 or atividade_B < 0 or atividade_C < 0:
+    print ('Erro: Os dias informados não devem conter numeração negativa')
 else:
-    print ('Erro: Não utilize valores negativos')
+    tempo_total = atividade_A + atividade_B + atividade_C
+    print (f'O tempo total utilizado para finalizar as atividades foram de: {tempo_total} dias')
 
 3#Lucas trabalha em TI e precisa garantir que a temperatura de uma sala de servidores não ultrapasse 25°C. Ele quer um programa que receba a temperatura atual como entrada e, se necessário, exiba uma mensagem de alerta.
 
-temperatura = int(input('Digite a temperatura atual: '))
+temperatura = float(input('Digite a temperatura atual: '))
 
-if temperatura <= 25:
-    print (f'A temperatura é de {temperatura}, está dentro do limite permitido')
+if temperatura > 25:
+    print ('Alerta! Temperatura a cima do limite seguro')
 else:
-    print (f'Alerta! A temperatura é de {temperatura}, esta acima do limite permitido')
+    print (f'A temperatuda é de {temperatura} graus, está dentre do limite de segurança')
 
 4#O programa deve receber o peso e a altura de uma pessoa e exibir o valor do IMC, além de indicar se está abaixo do peso, com peso normal ou acima do peso. Crie um programa que receba o peso (em kg) e a altura (em metros) e calcule o IMC usando a fórmula: IMC = peso / (altura ** 2) Depois, exiba o valor do IMC e uma mensagem indicando se está abaixo do peso (IMC < 18.5), peso normal (18.5 <= IMC < 25) ou acima do peso (IMC >= 25).
-peso = float(input('Digite seu peso: '))
-altura = float(input('Digite sua altura '))
+peso = float(input('Digite o seu peso: '))
+altura = float(input('Digite a sua altura: '))
 
-IMC = peso / altura ** 2
+IMC = peso / (altura ** 2)
 
 if IMC < 18.5:
-    print (f'Seu IMC é {IMC:.2f}, está abaixo do peso')
-elif IMC < 25:
-    print (f'Seu IMC é {IMC:.2f}, está dentro do peso')
+    print (f'Seu IMC é de: {IMC:.2f}, se encontra abaixo do peso.')
+elif 18.5 <= IMC < 25:
+    print (f'Seu IMC é de: {IMC:.2f}, se encontra em normalidade.')
 else:
-    print (f'Seu IMC é: {IMC:.2f}, está acima do peso')
+    print (f'Seu IMC é de: {IMC:.2f}, se encontra acima do peso.')
 
 5#Ele estabeleceu um limite de R$ 3.000,00 para seus gastos e precisa de um programa que ajude a controlar suas despesas. O programa deve receber o total de despesas realizadas e informar se ele ultrapassou o limite ou ainda está dentro do orçamento.
-despesa_mensal = float(input('Digite a despesa total do mês: '))
+limite = 3000.00
+despesa_mensal = float(input('Digite a despesa total do mês: R$ '))
 
-if despesa_mensal > 3000:
-    print ('Atenção! Você ultrapassou o limite do orçamento')
+diferenca = despesa_mensal - limite
+
+if diferenca > 0:
+    print (f'Atenção! Você ultrapassou o limite orçado em: R$ {diferenca:.2f}')
+elif diferenca < 0:
+    print (f'Você ainda tem: R$ {abs(diferenca):.2f} disponíveis do orçamento')
 else:
-    print ('O valor da despesa se encontra dentro do limite estipulado')
+    print (f'Você utilizou exatamente o valor do orçamento estipulado: R$ {limite}')
 
 6#O escritório só permite acesso entre 8h e 18h. Crie um programa que receba a hora atual como entrada (em formato de 24 horas) e exiba uma mensagem informando se o acesso é permitido ou negado. 
-horario_atual = int(input('Digite o horário atual (formato de 24 horas): '))
+hora_atual = input ('Digite a hora atual (HH:MM): ')
 
-if 8 <= horario_atual <= 18:
+hora, minuto = hora_atual.split(':')
+hora = int(hora)
+minuto = int(minuto)
+
+total_minutos = hora * 60 + minuto
+
+inicio = 8 * 60
+fim = 18 * 60
+
+if inicio <= total_minutos < fim:
     print ('Acesso permitido.')
 else:
-    print ('Acesso negado!')
+    print ('Acesso negado.')
 
 7#Escreva um programa que receba três notas como entrada e calcule a média final. Com base na média, exiba a situação do aluno.
 #Média >= 7: Aprovado
@@ -81,14 +97,18 @@ else:
 #Até 100 km: R$ 10,00
 #Entre 100 km e 200 km: R$ 20,00
 #Acima de 200 km: R$ 30,00
-distancia = float(input('Digite a distância percorrida: '))
+distancia_percorrida = int(input('Digite a distância percorrida em KM: '))
 
-if distancia <= 100:
-    print (f'A distância foi de {distancia:.3f} KM, valor do pedágio é: R$ 10,00')
-elif 100 < distancia <= 200:
-    print (f'A distância foi de {distancia:.3f} KM, valor do pedágio é: R$ 20,00')
+distancia_100 = 10.00
+distancia_100_a_200 = 20.00
+distancia_200_mais = 30.00
+
+if distancia_percorrida <= 100:
+    print (f'A distância percorrida foi de {distancia_percorrida} Km, o valor do pedágio é de: R$ {distancia_100}')
+elif 100 < distancia_percorrida <= 200:
+    print (f'A distância percorrida foi de {distancia_percorrida} Km, o valor do pedágio é de: R$ {distancia_100_a_200}')
 else:
-    print (f'A distancia foi de {distancia:.3f} KM, o valor do pedágio é: R$ 30,00')
+    print (f'A distância percorrida foi de {distancia_percorrida} Km, o valor do pedágio é de: R$ {distancia_200_mais}')
 
 9#Escreva um programa que receba um número inteiro e exiba uma mensagem informando se ele é par ou ímpar
 numero = int(input('Digite um número inteiro: '))
@@ -102,15 +122,20 @@ else:
 #O valor da renda mensal precisa ser maior que R$ 2.000,00.
 #O valor da parcela não pode ultrapassar 30% da renda.
 #Crie um programa que receba como entrada a renda mensal de Pedro e o valor da parcela desejada. O programa deve informar se o empréstimo foi aprovado ou negado com base nas condições acima.
-renda = float(input('Digite o valor da sua renda mensal: '))
-parcela = float(input('Digete o valor da parcela desejada: '))
+renda = float(input('Digite o valor mensal de sua renda: '))
+parcela_desejada = float(input('Digite o valorda parcela desejada: '))
 
-if renda > 2000 and parcela <= 0.3 * renda:
-    print ('Empréstimo aprovado')
-elif renda <= 2000:
-    print ('Empréstimo negado: Renda insuficiente')
+if renda <= 0 or parcela_desejada <=0:
+    print ('Valores inválidos.')
+elif renda < 2000:
+    print ('Empréstimo negado: Renda insuficiente.')
 else:
-    print ('Empréstimo negado: Parcela acima de 30% do valor da renda')
+    limite_da_parcela = renda * 0.3
+
+    if parcela_desejada > limite_da_parcela:
+        print ('Empréstimo negado: Valor da parcela superior a 30% da renda.')
+    else:
+        print ('Empréstimo aprovado!')
 
 11#Ana está desenvolvendo um programa que precisa processar uma lista de 5 nomes de clientes para gerar relatórios mensais. Para isso, ela precisa escrever um programa que percorra a lista de nomes e exiba cada cliente.
 clientes = ['João', 'Maria', 'Carlos', 'Ana', 'Beatriz']
