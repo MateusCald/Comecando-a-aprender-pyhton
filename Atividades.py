@@ -175,12 +175,13 @@ for livro in livros:
         break
 
 16#Crie um programa que simule as vendas de um livro com o estoque inicial de 5 exemplares. O programa deve exibir a mensagem "Venda realizada! Estoque restante: <quantidade>" a cada venda e, ao final, exibir a mensagem "Estoque esgotado".
-estoque_livros = 5
+estoque_de_livros = 5 
 
-while estoque_livros > 0:
-    estoque_livros -= 1
-    print (f'Venda realizada! Estoque restante: {estoque_livros}')
-print ('Estoque esgotado')
+while estoque_de_livros > 0:
+    estoque_de_livros -= 1
+    print (f'Venda realizada! Estoque restante: {estoque_de_livros}.')
+
+print ('Estoque esgotado.')
 
 17#Crie um programa que utilize um laço for para exibir as seguintes mensagens:
 #Para números pares, exiba: "Faltam apenas <número> segundos - Não perca essa oportunidade!".
@@ -206,7 +207,7 @@ livros = [
 for livro in livros:
     if livro ['estoque'] == 0:
         continue
-print (f'Livro disponivel: {livro['nome']}')    
+print (f'Livro disponível: {livro["nome"]}.')  
 
 19#João está desenvolvendo um sistema de cadastro para um site de leitura. Ele precisa garantir que os usuários insiram um nome de usuário e uma senha válidos. As regras são as seguintes:
 #O nome de usuário deve ter pelo menos 5 caracteres.
@@ -214,14 +215,16 @@ print (f'Livro disponivel: {livro['nome']}')
 #João quer que o sistema continue solicitando as informações até que ambas as condições sejam atendidas. Quando o usuário insere dados válidos, o programa deve exibir a mensagem: "Cadastro realizado com sucesso!".
 
 while True:
-    usuario = input('Digite o nome de seu usuário: ')
-    senha = input('Digite sua senha: ')
 
+    usuario = input('Digite seu nome de usuário: ')
     if len (usuario) < 5:
-        print ('O nome do usuário deve conter ao menos 5 carateres')
+        print ('O nome do usuário deve conter ao menos 5 caracteres.')
         continue
+
+    senha = (input('Digite sua senha: '))
     if len (senha) < 8:
-        print ('A senha deve conter ao menos 8 caracteres')
+        print ('A senha deve conter ao menos 8 caracteres.')
         continue
-    print ('Cadastro realizado com sucesso!')
+    
+    print('Cadastro realizado com sucesso!')
     break
